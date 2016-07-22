@@ -1,0 +1,18 @@
+<network ipv6='yes'>
+  <name>juju6</name>
+  <uuid>bc22feb5-bbfb-4aab-b3fc-6a3118135b3f</uuid>
+  <forward mode='route'/>
+  <bridge name='virbr42' stp='on' delay='0'/>
+  <mac address='52:54:00:eb:ad:a7'/>
+  <domain name='juju6'/>
+  <ip address='192.168.100.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.100.128' end='192.168.100.254'/>
+    </dhcp>
+  </ip>
+  <ip family='ipv6' address='2001:470:1f15:aad::a:13' prefix='64'>
+    <dhcp>
+      <range start='2001:470:1f15:aad::a:100' end='2001:470:1f15:aad::a:1ff'/>
+    </dhcp>
+  </ip>
+</network>

@@ -1,0 +1,12 @@
+instance-id: IID-UUID
+hostname: HOSTNAME
+local-hostname: HOSTNAME
+fqdn: HOSTNAME
+manage_etc_hosts: true
+preserve_hostname: true
+network:
+  config: disabled
+network-interfaces: |
+  auto ens3
+  iface ens3 inet6 auto
+    dns-nameservers 2001:4860:4860::8888

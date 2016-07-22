@@ -1,0 +1,37 @@
+#cloud-config
+
+growpart:
+  mode: auto
+  devices: ['/']
+
+chpasswd:
+  list: |
+    root:root
+    ubuntu:password
+  expire: false
+
+ssh_pwauth: True
+disable_root: false
+ssh_import_id: [frobware]
+
+packages:
+  - rdnssd
+  - ndisc6
+  - silversearcher-ag
+
+package_upgrade: false
+
+write_files:
+  - path: /etc/cloud/cloud.cfg.d/99-cloud-init-no-netconfig.cfg
+    content: |
+      network: {config: disabled}
+
+package_reboot_if_required: true
+
+runcmd:
+  - for i in /usr/bin/apt*; do ln -s /usr/bin/eatmydata /usr/local/bin/$(basename $i); done
+  - update-alternatives --set editor /usr/bin/vim.basic
+
+power_state:
+  mode: reboot
+  condition: True
